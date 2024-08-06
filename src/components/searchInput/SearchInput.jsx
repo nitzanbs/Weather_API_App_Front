@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './SearchInput.module.css';
 
-
 export default function SearchInput({ onSearch }) {
     const [city, setCity] = useState('');
 
@@ -10,16 +9,15 @@ export default function SearchInput({ onSearch }) {
     };
 
     return (
-        <>
-            <div>
-                <input
-                    type="text"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    placeholder="Enter city"
-                />
-                <button onClick={handleSearch}>Get Weather</button>
-            </div>
-        </>
-    )
+        <div className={styles.searchContainer}>
+            <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="Enter city"
+                className={styles.searchInput}
+            />
+            <button onClick={handleSearch} className={styles.searchButton}>Check</button>
+        </div>
+    );
 }

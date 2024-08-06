@@ -1,22 +1,79 @@
-import React from 'react'
+import React from 'react';
 import styles from './WeatherDisplay.module.css';
 
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1; 
+    const year = date.getFullYear().toString().slice(-2); 
+    return `${day}/${month}/${year}`;
+};
 
 export default function WeatherDisplayBox({ weather }) {
+    console.log('Weather data:', weather);
+
+    if (!weather) {
+        return <p>No weather data available</p>;
+    }
+
+    const { location, current, forecast } = weather;
+
+    const cityName = location.name;
+    const countryName = location.country;
+    const date = formatDate(location.localtime); 
+    const time = new Date(location.localtime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
+    const temperatureC = Math.round(current.temp_c); 
+    const weatherDescription = current.condition.text;
+    const precipitationMm = Math.round(current.precip_mm); 
+    const humidityPercentage = current.humidity;
+    const windKph = Math.round(current.wind_kph); 
+
+    const hourlyTemperatures = forecast?.forecastday?.[0]?.hour
+        .filter(hourData => [13, 14, 15, 16, 17].includes(new Date(hourData.time).getHours()))
+        .map(hourData => ({
+            time: new Date(hourData.time).getHours(),
+            temp: Math.round(hourData.temp_c) 
+        })) || [];
+
     return (
-        <>
-            <div className={styles.weatherDisplay}>
-                {weather ? (
-                    <div>
-                        <h2>Weather in {weather.location.name}</h2>
-                        <p>Temperature: {weather.current.temp_c}°C</p>
-                        <p>Condition: {weather.current.condition.text}</p>
-                        <img src={weather.current.condition.icon} alt="weather icon" />
-                    </div>
-                ) : (
-                    <p>No weather data available</p>
-                )}
+        <div className={styles.weatherDisplay}>
+            <div>
+                <div>
+                    <h2 className={styles.cityName}>{cityName}</h2>
+                    <p className={styles.countryName}>{countryName}</p>
+                </div>
+                <p className={styles.dateTime}>{date} at {time}</p>
+                <div className={styles.bigTempBox}>
+                    <p className={styles.bigTemp}>{temperatureC}°</p>
+                    <p className={styles.condition}>{weatherDescription}</p>
+                </div>
             </div>
-        </>
-    )
+
+            <div className={styles.categoryRow}>
+                <div>
+                    <p className={styles.category}>Precipitation</p>
+                    <p className={styles.categoryValue}>{precipitationMm} mm</p>
+                </div>
+                <div>
+                    <p className={styles.category}>Humidity</p>
+                    <p className={styles.categoryValue}>{humidityPercentage}%</p>
+                </div>
+                <div>
+                    <p className={styles.category}>Wind</p>
+                    <p className={styles.categoryValue}>{windKph} km/h</p>
+                </div>
+            </div>
+
+            {hourlyTemperatures.length > 0 && (
+                <div className={styles.hourRow}>
+                    {hourlyTemperatures.map((hour, index) => (
+                        <div key={index}>
+                            <p className={styles.hour}>{hour.time}:00</p>
+                            <p className={styles.hourTemp}>{hour.temp}°</p>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
 }
