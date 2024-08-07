@@ -31,7 +31,7 @@ export default function Home() {
             <SearchInput onSearch={handleFetchWeather} />
             {error && <p style={{ color: 'red' }}>{error}</p>}
           </div>
-          <div>
+          <div className={styles.LocationDisplayDiv}>
             {weather && (
               <LocationDisplay
                 latitude={weather.location.lat}

@@ -4,8 +4,8 @@ import styles from './WeatherDisplay.module.css';
 const formatDate = (dateString) => {
     const date = new Date(dateString);
     const day = date.getDate();
-    const month = date.getMonth() + 1; 
-    const year = date.getFullYear().toString().slice(-2); 
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear().toString().slice(-2);
     return `${day}/${month}/${year}`;
 };
 
@@ -20,60 +20,62 @@ export default function WeatherDisplayBox({ weather }) {
 
     const cityName = location.name;
     const countryName = location.country;
-    const date = formatDate(location.localtime); 
-    const time = new Date(location.localtime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
-    const temperatureC = Math.round(current.temp_c); 
+    const date = formatDate(location.localtime);
+    const time = new Date(location.localtime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const temperatureC = Math.round(current.temp_c);
     const weatherDescription = current.condition.text;
-    const precipitationMm = Math.round(current.precip_mm); 
+    const precipitationMm = Math.round(current.precip_mm);
     const humidityPercentage = current.humidity;
-    const windKph = Math.round(current.wind_kph); 
+    const windKph = Math.round(current.wind_kph);
 
     const hourlyTemperatures = forecast?.forecastday?.[0]?.hour
         .filter(hourData => [13, 14, 15, 16, 17].includes(new Date(hourData.time).getHours()))
         .map(hourData => ({
             time: new Date(hourData.time).getHours(),
-            temp: Math.round(hourData.temp_c) 
+            temp: Math.round(hourData.temp_c)
         })) || [];
 
     return (
-        <div className={styles.weatherDisplay}>
-            <div>
+        <div className={styles.weatherDisplayFrame}>
+            <div className={styles.weatherDisplay}>
                 <div>
-                    <h2 className={styles.cityName}>{cityName}</h2>
-                    <p className={styles.countryName}>{countryName}</p>
+                    <div>
+                        <h2 className={styles.cityName}>{cityName}</h2>
+                        <p className={styles.countryName}>{countryName}</p>
+                    </div>
+                    <p className={styles.dateTime}>{date} at {time}</p>
+                    <div className={styles.bigTempBox}>
+                        <p className={styles.bigTemp}>{temperatureC}<span lassName={styles.degreeSymbol}>°</span></p>
+                        <p className={styles.condition}>{weatherDescription}</p>
+                    </div>
                 </div>
-                <p className={styles.dateTime}>{date} at {time}</p>
-                <div className={styles.bigTempBox}>
-                    <p className={styles.bigTemp}>{temperatureC}<span lassName={styles.degreeSymbol}>°</span></p>
-                    <p className={styles.condition}>{weatherDescription}</p>
-                </div>
-            </div>
 
-            <div className={styles.categoryRow}>
-                <div>
-                    <p className={styles.category}>precipitation</p>
-                    <p className={styles.categoryValue}>{precipitationMm} mm</p>
+                <div className={styles.categoryRow}>
+                    <div>
+                        <p className={styles.category}>precipitation</p>
+                        <p className={styles.categoryValue}>{precipitationMm} mm</p>
+                    </div>
+                    <div>
+                        <p className={styles.category}>humidity</p>
+                        <p className={styles.categoryValue}>{humidityPercentage}%</p>
+                    </div>
+                    <div>
+                        <p className={styles.category}>wind</p>
+                        <p className={styles.categoryValue}>{windKph} km/h</p>
+                    </div>
                 </div>
-                <div>
-                    <p className={styles.category}>humidity</p>
-                    <p className={styles.categoryValue}>{humidityPercentage}%</p>
-                </div>
-                <div>
-                    <p className={styles.category}>wind</p>
-                    <p className={styles.categoryValue}>{windKph} km/h</p>
-                </div>
-            </div>
 
-            {hourlyTemperatures.length > 0 && (
-                <div className={styles.hourRow}>
-                    {hourlyTemperatures.map((hour, index) => (
-                        <div key={index}>
-                            <p className={styles.hour}>{hour.time}:00</p>
-                            <p className={styles.hourTemp}>{hour.temp}°</p>
-                        </div>
-                    ))}
-                </div>
-            )}
+                {hourlyTemperatures.length > 0 && (
+                    <div className={styles.hourRow}>
+                        {hourlyTemperatures.map((hour, index) => (
+                            <div key={index}>
+                                <p className={styles.hour}>{hour.time}:00</p>
+                                <p className={styles.hourTemp}>{hour.temp}°</p>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

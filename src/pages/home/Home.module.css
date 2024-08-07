@@ -1,11 +1,11 @@
-
 .homePage {
     display: flex;
     align-items: center;
-    width: calc(100% - 108px); 
-    height: calc(768px - 108px); 
-    margin: 54px; 
-    box-sizing: border-box; 
+    width: calc(100% - 108px);
+    height: calc(100vh - 108px);
+    margin: 54px;
+    box-sizing: border-box;
+
 }
 
 .Lbox {
@@ -22,9 +22,12 @@
     display: flex;
     flex-direction: column;
     align-content: space-around;
-    background-color: #DDE4E6;
-    border-radius: 5px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
+}
+
+.LocationDisplayDiv {
+    margin-top: 120px;
+
 }
 
 .logo {
@@ -43,7 +46,6 @@
     margin-left: 53px;
     margin-top: 90px;
     margin-bottom: 50px;
-
 }
 
 .inputCityTitle {
@@ -57,7 +59,6 @@
     padding-left: 12px;
     margin-left: 53px;
     margin-bottom: 7px;
-
 }
 
 /* Media Queries */
@@ -71,16 +72,21 @@
         margin: 20px;
     }
 
-    .Lbox, .Rbox {
+    .Lbox,
+    .Rbox {
         width: 100%;
         height: auto;
+        padding: 7px;
+        margin-bottom: 20px;
     }
 
     .headline {
-        width: 100%;
         height: auto;
         font-size: 24px;
         line-height: 32px;
+        margin-left: 20px;
+        margin-top: 30px;
+        margin-bottom: 20px;
     }
 
     .inputCityTitle {
@@ -88,6 +94,12 @@
         height: auto;
         font-size: 14px;
         line-height: 20px;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .LocationDisplayDiv {
+        margin: 0;
     }
 }
 
@@ -96,27 +108,39 @@
     .homePage {
         flex-direction: column;
         width: 100%;
-        height: calc(100vh - 100px);
+        height: auto;
         margin: 30px;
     }
 
-    .Lbox, .Rbox {
-        width: 50%;
-        height: 100%;
+    .Lbox,
+    .Rbox {
+        width: 100%;
+        height: auto;
+        margin-bottom: 25px;
     }
 
     .headline {
-        width: 80%;
         height: auto;
         font-size: 28px;
         line-height: 40px;
+        margin-left: 30px;
+        margin-top: 60px;
+        margin-bottom: 30px;
     }
 
     .inputCityTitle {
-        width: 70px;
+        width: auto;
         height: auto;
         font-size: 15px;
-        line-height: 20px;
+        line-height: 22px;
+        margin-left: 30px;
+        margin-bottom: 15px;
+    }
+    
+    .LocationDisplayDiv {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    
     }
 }
 
@@ -124,14 +148,16 @@
 @media (min-width: 901px) and (max-width: 1200px) {
     .homePage {
         flex-direction: row;
-        width: 100%;
+        width: calc(100% - 80px);
         height: calc(100vh - 80px);
         margin: 40px;
+        justify-content: space-around;
     }
 
-    .Lbox, .Rbox {
-        width: 50%;
-        height: 100%;
+    .Lbox,
+    .Rbox {
+        width: 46%;
+        height: auto;
     }
 
     .headline {
@@ -139,41 +165,19 @@
         height: auto;
         font-size: 30px;
         line-height: 44px;
+        margin-left: 40px;
+        margin-top: 80px;
+        margin-bottom: 40px;
     }
 
     .inputCityTitle {
-        width: 80px;
+        width: auto;
         height: auto;
         font-size: 16px;
         line-height: 22px;
-    }
-}
-
-/* Desktop */
-@media (min-width: 1201px) {
-    .homePage {
-        flex-direction: row;
-        width: calc(100% - 108px);
-        height: calc(768px - 108px);
-        margin: 54px;
+        margin-left: 40px;
+        margin-bottom: 20px;
     }
 
-    .Lbox, .Rbox {
-        width: 50%;
-        height: 100%;
-    }
-
-    .headline {
-        width: 273px;
-        height: 132px;
-        font-size: 30px;
-        line-height: 44px;
-    }
-
-    .inputCityTitle {
-        width: 80px;
-        height: 24px;
-        font-size: 16px;
-        line-height: 22px;
-    }
+    
 }

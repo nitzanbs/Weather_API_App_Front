@@ -15,9 +15,10 @@ export default function SearchInput({ onSearch }) {
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 placeholder="Enter city"
+                aria-label="Enter city name"
                 className={styles.searchInput}
             />
-            <button onClick={handleSearch} className={styles.searchButton}>Check</button>
+            <button onClick={handleSearch} className={styles.searchButton} aria-label="Check weather">Check</button>
         </div>
     );
 }
