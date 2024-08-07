@@ -14,11 +14,13 @@
     max-width: 431px;
     height: 63px;
     color: #363636;
+    margin-left: 53px;
+
 }
 
 .searchButton {
     position: absolute;
-    right: 380px; 
+    right: 320px; 
     top: 50%; 
     transform: translateY(-50%); 
     background-color: #046B3B;
@@ -32,6 +34,7 @@
     width: auto; 
     min-width: 95px; 
     box-sizing: border-box; 
+
 }
 
 .searchButton:hover {

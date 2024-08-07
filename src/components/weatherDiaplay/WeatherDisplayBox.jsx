@@ -44,22 +44,22 @@ export default function WeatherDisplayBox({ weather }) {
                 </div>
                 <p className={styles.dateTime}>{date} at {time}</p>
                 <div className={styles.bigTempBox}>
-                    <p className={styles.bigTemp}>{temperatureC}°</p>
+                    <p className={styles.bigTemp}>{temperatureC}<span lassName={styles.degreeSymbol}>°</span></p>
                     <p className={styles.condition}>{weatherDescription}</p>
                 </div>
             </div>
 
             <div className={styles.categoryRow}>
                 <div>
-                    <p className={styles.category}>Precipitation</p>
+                    <p className={styles.category}>precipitation</p>
                     <p className={styles.categoryValue}>{precipitationMm} mm</p>
                 </div>
                 <div>
-                    <p className={styles.category}>Humidity</p>
+                    <p className={styles.category}>humidity</p>
                     <p className={styles.categoryValue}>{humidityPercentage}%</p>
                 </div>
                 <div>
-                    <p className={styles.category}>Wind</p>
+                    <p className={styles.category}>wind</p>
                     <p className={styles.categoryValue}>{windKph} km/h</p>
                 </div>
             </div>
