@@ -61,6 +61,22 @@
     margin-bottom: 7px;
 }
 
+.errorMessage {
+    color: red;
+    font-size: 20px;
+    margin-top: 40px;
+    text-align: left;
+    margin-left: 70px;
+}
+
+.loadingMessage {
+    color: #007bff; 
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+
+
 /* Media Queries */
 
 /* Phone */
@@ -112,11 +128,17 @@
         margin: 30px;
     }
 
-    .Lbox,
+    .Lbox {
+        width: 100%;
+        height: auto;
+        margin-bottom: 25px;
+    }
+
     .Rbox {
         width: 100%;
         height: auto;
         margin-bottom: 25px;
+        align-items: center;
     }
 
     .headline {
@@ -136,11 +158,11 @@
         margin-left: 30px;
         margin-bottom: 15px;
     }
-    
+
     .LocationDisplayDiv {
         margin-top: 20px;
         margin-bottom: 20px;
-    
+
     }
 }
 
@@ -179,5 +201,5 @@
         margin-bottom: 20px;
     }
 
-    
+
 }

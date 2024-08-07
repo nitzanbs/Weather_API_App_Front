@@ -13,7 +13,7 @@ export default function WeatherDisplayBox({ weather }) {
     console.log('Weather data:', weather);
 
     if (!weather) {
-        return <p>No weather data available</p>;
+        return (<div><img className={styles.weatherapiLogo} src="src\img\weather.png" alt="weatherapi logo" /></div>);
     }
 
     const { location, current, forecast } = weather;

@@ -15,6 +15,11 @@
     font: normal normal normal 22px/32px Heebo;
     height: 63px;
     color: #363636;
+    outline: none; 
+}
+
+.searchInput:focus {
+    outline: 1px solid black; 
 }
 
 .searchButton {
@@ -35,4 +40,13 @@
 
 .searchButton:hover {
     background-color: #0e8a50;
+}
+
+.warningMessage {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
 }
