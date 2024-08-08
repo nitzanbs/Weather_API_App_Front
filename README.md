@@ -58,7 +58,7 @@ This weather application is a homework project for Fintek Digital. The app provi
    yarn start
 
 
-5. Open your browser and navigate to http://localhost:3000 to view the application.
+5. Open your browser and navigate to http://localhost:5500 to view the application.
 
 ### Usage
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/weather';
+const API_URL = 'http://localhost:5500/api/weather';
 
 export const getWeather = async (city) => {
   try {
