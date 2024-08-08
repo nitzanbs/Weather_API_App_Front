@@ -11,7 +11,6 @@ export default function SearchInput({ onSearch }) {
 
     const handleInputChange = (e) => {
         const inputValue = e.target.value;
-        // סינון תווים לא רצויים (לא אותיות באנגלית)
         const filteredValue = inputValue.replace(/[^a-zA-Z\s]/g, '');
         setCity(filteredValue);
     };
@@ -33,12 +32,19 @@ export default function SearchInput({ onSearch }) {
                 placeholder="Enter city"
                 aria-label="Enter city name"
                 className={styles.searchInput}
-                pattern="[a-zA-Z\s]*"  
-                title="Please enter only English letters" 
+                pattern="[a-zA-Z\s]*"
+                title="Please enter only English letters"
                 onFocus={handleFocus}
                 onBlur={handleBlur}
             />
-            <button onClick={handleSearch} className={styles.searchButton} aria-label="Check weather">Check</button>
+            <button
+                onClick={handleSearch}
+                className={styles.searchButton}
+                aria-label="Check weather"
+                disabled={!city} 
+            >
+                Check
+            </button>
             {showWarning && <p className={styles.warningMessage}>Please enter only English letters.</p>}
         </div>
     );

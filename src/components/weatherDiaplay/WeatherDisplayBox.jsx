@@ -9,11 +9,11 @@ const formatDate = (dateString) => {
     return `${day}/${month}/${year}`;
 };
 
-export default function WeatherDisplayBox({ weather }) {
+export default function WeatherDisplayBox({ weather, isCelsius }) {
     console.log('Weather data:', weather);
 
     if (!weather) {
-        return (<div><img className={styles.weatherapiLogo} src="src\img\weather.png" alt="weatherapi logo" /></div>);
+        return (<div><img className={styles.weatherapiLogo} src="src/img/weather.png" alt="weatherapi logo" /></div>);
     }
 
     const { location, current, forecast } = weather;
@@ -22,7 +22,7 @@ export default function WeatherDisplayBox({ weather }) {
     const countryName = location.country;
     const date = formatDate(location.localtime);
     const time = new Date(location.localtime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const temperatureC = Math.round(current.temp_c);
+    const temperature = isCelsius ? Math.round(current.temp_c) : Math.round(current.temp_f);
     const weatherDescription = current.condition.text;
     const precipitationMm = Math.round(current.precip_mm);
     const humidityPercentage = current.humidity;
@@ -32,7 +32,7 @@ export default function WeatherDisplayBox({ weather }) {
         .filter(hourData => [13, 14, 15, 16, 17].includes(new Date(hourData.time).getHours()))
         .map(hourData => ({
             time: new Date(hourData.time).getHours(),
-            temp: Math.round(hourData.temp_c)
+            temp: isCelsius ? Math.round(hourData.temp_c) : Math.round(hourData.temp_f)
         })) || [];
 
     return (
@@ -45,7 +45,7 @@ export default function WeatherDisplayBox({ weather }) {
                     </div>
                     <p className={styles.dateTime}>{date} at {time}</p>
                     <div className={styles.bigTempBox}>
-                        <p className={styles.bigTemp}>{temperatureC}<span lassName={styles.degreeSymbol}>°</span></p>
+                        <p className={styles.bigTemp}>{temperature}°</p>
                         <p className={styles.condition}>{weatherDescription}</p>
                     </div>
                 </div>

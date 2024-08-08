@@ -22,7 +22,6 @@
     display: flex;
     flex-direction: column;
     align-content: space-around;
-    /* margin-top: 40px; */
 }
 
 .LocationDisplayDiv {
@@ -70,11 +69,39 @@
 }
 
 .loadingMessage {
-    color: #007bff; 
+    color: #007bff;
     font-size: 18px;
     margin-top: 10px;
-  }
-  
+}
+
+.cityBtmRow {
+    display: flex;
+}
+
+.toggleButton {
+    background-color: #094127;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 37px;
+    height: 37px;
+    margin-left: 300px;
+
+}
+
+.toggleButton:hover {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: #0c5b36;
+}
+
+.toggleButton:disabled {
+    background-color: #A9A9A9; 
+    cursor: not-allowed;
+}
 
 
 /* Media Queries */
@@ -117,6 +144,11 @@
     .LocationDisplayDiv {
         margin: 0;
     }
+
+    .toggleButton {
+        margin-left: 290px;
+    }
+
 }
 
 /* Tablet */
@@ -164,6 +196,10 @@
         margin-bottom: 20px;
 
     }
+
+    .toggleButton {
+        margin-left: 330px;
+    }
 }
 
 /* Laptop */
@@ -199,6 +235,10 @@
         line-height: 22px;
         margin-left: 40px;
         margin-bottom: 20px;
+    }
+    
+    .toggleButton {
+        margin-left: 260px;
     }
 
 
