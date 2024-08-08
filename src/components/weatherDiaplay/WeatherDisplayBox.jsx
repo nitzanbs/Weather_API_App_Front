@@ -13,7 +13,17 @@ export default function WeatherDisplayBox({ weather, isCelsius }) {
     console.log('Weather data:', weather);
 
     if (!weather) {
-        return (<div><img className={styles.weatherapiLogo} src="src/img/weather.png" alt="weatherapi logo" /></div>);
+        return (
+            <div>
+                <img
+                    className={styles.weatherapiLogo}
+                    src="src/img/weather.png"
+                    alt="Weather API logo"
+                    role="img"
+                    aria-label="Weather API logo"
+                />
+            </div>
+        );
     }
 
     const { location, current, forecast } = weather;
@@ -36,11 +46,11 @@ export default function WeatherDisplayBox({ weather, isCelsius }) {
         })) || [];
 
     return (
-        <div className={styles.weatherDisplayFrame}>
+        <div className={styles.weatherDisplayFrame} role="region" aria-labelledby="weatherHeading">
             <div className={styles.weatherDisplay}>
                 <div>
                     <div>
-                        <h2 className={styles.cityName}>{cityName}</h2>
+                        <h2 className={styles.cityName} id="weatherHeading">{cityName}</h2>
                         <p className={styles.countryName}>{countryName}</p>
                     </div>
                     <p className={styles.dateTime}>{date} at {time}</p>
@@ -52,21 +62,21 @@ export default function WeatherDisplayBox({ weather, isCelsius }) {
 
                 <div className={styles.categoryRow}>
                     <div>
-                        <p className={styles.category}>precipitation</p>
+                        <p className={styles.category}>Precipitation</p>
                         <p className={styles.categoryValue}>{precipitationMm} mm</p>
                     </div>
                     <div>
-                        <p className={styles.category}>humidity</p>
+                        <p className={styles.category}>Humidity</p>
                         <p className={styles.categoryValue}>{humidityPercentage}%</p>
                     </div>
                     <div>
-                        <p className={styles.category}>wind</p>
+                        <p className={styles.category}>Wind</p>
                         <p className={styles.categoryValue}>{windKph} km/h</p>
                     </div>
                 </div>
 
                 {hourlyTemperatures.length > 0 && (
-                    <div className={styles.hourRow}>
+                    <div className={styles.hourRow} aria-live="polite">
                         {hourlyTemperatures.map((hour, index) => (
                             <div key={index}>
                                 <p className={styles.hour}>{hour.time}:00</p>
