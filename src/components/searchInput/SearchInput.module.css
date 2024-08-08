@@ -8,23 +8,23 @@
 
 .searchInput {
     flex: 1;
-    padding: 0 110px 0 12px; 
+    padding: 0 110px 0 12px;
     border: none;
     border-radius: 10px;
     background-color: white;
     font: normal normal normal 22px/32px Heebo;
     height: 63px;
     color: #363636;
-    outline: none; 
+    outline: none;
 }
 
 .searchInput:focus {
-    outline: 1px solid black; 
+    outline: 1px solid black;
 }
 
 .searchButton {
     position: absolute;
-    right: 10px; 
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     background-color: #046B3B;
@@ -43,7 +43,7 @@
 }
 
 .searchButton:disabled {
-    background-color: #A9A9A9; 
+    background-color: #A9A9A9;
     cursor: not-allowed;
 }
 
@@ -56,4 +56,24 @@
     margin-top: 5px;
 }
 
+.clearButton {
+    position: absolute;
+    right: 130px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+.searchInput:focus+.clearButton {
+    display: block;
+}
+
+.clearButtonIcon {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: #000000;
+}
 

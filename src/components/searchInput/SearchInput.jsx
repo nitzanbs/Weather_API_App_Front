@@ -23,6 +23,11 @@ export default function SearchInput({ onSearch, id }) {
     setShowWarning(false);
   };
 
+  const handleClear = () => {
+    setCity('');
+    document.getElementById(id)?.focus(); // Focus back on the input field after clearing
+  };
+
   return (
     <div className={styles.searchContainer}>
       <input
@@ -38,6 +43,14 @@ export default function SearchInput({ onSearch, id }) {
         onBlur={handleBlur}
         id={id}
       />
+      <button
+        onClick={handleClear}
+        className={styles.clearButton}
+        aria-label="Clear input"
+        style={{ display: city ? 'block' : 'none' }} // Show button only if there is text
+      >
+        <span className={styles.clearButtonIcon}>X</span>
+      </button>
       <button
         onClick={handleSearch}
         className={styles.searchButton}
