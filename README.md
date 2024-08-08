@@ -40,7 +40,7 @@ This weather application is a homework project for Fintek Digital. The app provi
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/weather-app.git
+   git clone https://github.com/nitzanbs/Weather_API_App_Front.git
 
 2. Navigate into the project directory:
 
